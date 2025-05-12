@@ -8,14 +8,14 @@ class RecipeCard extends HTMLElement {
 
 		// EXPOSE - START (All expose numbers start with A)
 		// A1. TODO - Attach the shadow DOM to this Web Component (leave the mode open)
-		const shadow = this.attachShadow({ mode: "open"});
+		const shadow = this.attachShadow({ mode: "open" });
 		// A2. TODO - Create an <article> element - This will hold our markup once our data is set
-		const article = document.createElement("article");
+		const arti = document.createElement("article");
 		// A3. TODO - Create a style element - This will hold all of the styles for the Web Component
-		const style = document.createElement("style");
+		const styles = document.createElement("style");
 		// A4. TODO - Insert all of the styles from cardTemplate.html into the <style> element you just made (copy everything INSIDE the <style> tag>)
-		style.textContent = 
-		` 	* {
+		styles.textContent = 
+		`	* {
 			font-family: sans-serif;
 			margin: 0;
 			padding: 0;
@@ -91,8 +91,8 @@ class RecipeCard extends HTMLElement {
 			font-size: 12px;
 		  }`;
 		// A5. TODO - Append the <style> and <article> elements to the Shadow DOM
-		shadow.appendChild(style);
-		shadow.appendChild(article);
+		shadow.appendChild(styles);
+		shadow.appendChild(arti);
 	}
 
 	/**
@@ -130,22 +130,21 @@ class RecipeCard extends HTMLElement {
 		//           Remember to replace all the placeholders in the template with the data passed in.
 		//           i.e. imgSrc, titleLnk, etc
 		selectedArticle.innerHTML = 
-		`
-		 <img src=${data.imgSrc} alt=${data.imgAlt}>
-		 <p class="title">
-		 	<a href=${data.titleLnk}>${data.titleTxt}</a>
+		`<img src=${data.imgSrc}
+			alt=${data.imgAlt}>
+		<p class="title">
+			<a href=${data.titleLnk}>${data.titleTxt}</a>
 		</p>
 		<p class="organization">${data.organization}</p>
 		<div class="rating">
 			<span>${data.rating}</span>
-			<img src="/assets/images/icons${data.rating}-star.svg" alt="${data.rating} ${data.rating == 1 ? 'star' : 'stars'}">
+			<img src="/assets/images/icons/${data.rating}-star.svg" alt="${data.rating} ${data.rating == 1 ? 'star' : 'stars'}">
 			<span>(${data.numRatings})</span>
 		</div>
 		<time>${data.lengthTime}</time>
 		<p class="ingredients">
 			${data.ingredients}
-		</p>
-		`;
+		</p>`;
 	}
 }
 
