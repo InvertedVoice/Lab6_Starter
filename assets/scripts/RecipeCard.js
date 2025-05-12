@@ -136,11 +136,15 @@ class RecipeCard extends HTMLElement {
 			<a href="${data.titleLnk}">${data.titleTxt}</a>
 		  </p>
 		  <p class="organization">${data.organization}</p>
-		  <div class="rating">
-			<span>${data.rating}</span>
-			<img src="/assets/images/icons/${data.rating}-star.svg" alt="${data.rating} ${data.rating == 1 ? 'star' : 'stars'}">
-			<span>(${data.numRatings})</span>
-		  </div>
+			<div class="rating">
+  				${data.numRatings === 0 ? `
+   				 <span>No reviews</span>
+ 				 ` : `
+   				 <span>${data.rating}</span>
+   				 <img src="/assets/images/icons/${data.rating}-star.svg" alt="${data.rating} ${data.rating == 1 ? 'star' : 'stars'}">
+   				 <span>(${data.numRatings})</span>
+ 				 `}
+			</div>
 		  <time>${data.lengthTime}</time>
 		  <p class="ingredients">
 			${data.ingredients}
