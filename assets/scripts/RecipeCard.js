@@ -121,7 +121,7 @@ class RecipeCard extends HTMLElement {
 		if (!data) return;
 
 		// A6. TODO - Select the <article> we added to the Shadow DOM in the constructor
-		let selectedArticle = this.shadow.querySelector('article');
+		let selectedArticle = this.shadowRoot.querySelector('article');
 		// A7. TODO - Set the contents of the <article> with the <article> template given in
 		//           cardTemplate.html and the data passed in (You should only have one <article>,
 		//           do not nest an <article> inside another <article>). You should use template
@@ -131,21 +131,21 @@ class RecipeCard extends HTMLElement {
 		//           i.e. imgSrc, titleLnk, etc
 		selectedArticle.innerHTML = 
 		`
-		 <img src=${data.imgSrc} alt=${data.imgAlt}>
-		 <p class="title">
-		 	<a href=${data.titleLnk}>${data.titleTxt}</a>
-		</p>
-		<p class="organization">${data.organization}</p>
-		<div class="rating">
+		  <img src="${data.imgSrc}" alt="${data.imgAlt}">
+		  <p class="title">
+			<a href="${data.titleLnk}">${data.titleTxt}</a>
+		  </p>
+		  <p class="organization">${data.organization}</p>
+		  <div class="rating">
 			<span>${data.rating}</span>
-			<img src="/assets/images/icons${data.rating}-star.svg" alt="${data.rating} ${data.rating == 1 ? 'star' : 'stars'}">
+			<img src="/assets/images/icons/${data.rating}-star.svg" alt="${data.rating} ${data.rating == 1 ? 'star' : 'stars'}">
 			<span>(${data.numRatings})</span>
-		</div>
-		<time>${data.lengthTime}</time>
-		<p class="ingredients">
+		  </div>
+		  <time>${data.lengthTime}</time>
+		  <p class="ingredients">
 			${data.ingredients}
-		</p>
-		`;
+		  </p>
+		`;		
 	}
 }
 
